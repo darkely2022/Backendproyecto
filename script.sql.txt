@@ -1,0 +1,68 @@
+CREATE DATABASE arriendo;
+
+
+CREATE TABLE alumno ( rutAlumno VARCHAR(20) primary key,
+					 nombreAlumno    VARCHAR(100) NOT NULL ,
+					 apellidoAlumno  VARCHAR(100)NOT   NULL,
+					 direccionAlumno VARCHAR(500)  NULL,
+					 comunaAlumno    VARCHAR(100) NULL,
+					 correoAlumno    VARCHAR(100) NULL,
+					 password        VARCHAR(100) NULL );
+
+
+CREATE TABLE apoderado ( rutApoderado VARCHAR(20) primary key,
+					 nombreApoderado    VARCHAR(100) NOT NULL ,
+					 apellidoApoderado  VARCHAR(100)NOT   NULL,
+					 direccionApoderado VARCHAR(500)  NULL,
+					 comunaApoderado    VARCHAR(100) NULL,
+					 correoApoderado    VARCHAR(100) NULL );
+
+CREATE TABLE relacion ( rutapoderadoid VARCHAR(20) NOT NULL,
+					    rutalumnoid     VARCHAR(20) NOT NULL ,
+					    relacion_economica  VARCHAR(100)  NULL,
+					  constraint llave_relacion primary key(rutapoderadoid,rutalumnoid)
+                      
+					  );
+
+
+CREATE TABLE propietario ( rutpropietario VARCHAR(20) primary key,
+					 nombrepropietario    VARCHAR(100) NOT NULL ,
+					 apellidopropietario  VARCHAR(100)NOT   NULL,
+					 direccionpropietario VARCHAR(500)  NULL,
+					 comunapropietario    VARCHAR(100) NULL,
+					 correopropietario    VARCHAR(100) NULL,
+					 passwordpropietario        VARCHAR(100) NULL );
+
+CREATE TABLE comunas ( cod_comuna VARCHAR(20) primary key,
+					 desc_comuna   VARCHAR(100) NOT NULL  );
+
+
+CREATE TABLE propiedad ( folio serial primary key,
+					   nombrepropiedad   VARCHAR(100) NOT NULL,
+					   direccionpropiedad VARCHAR(100) NOT NULL,
+					   comunaid VARCHAR(20),
+						numhabitacion int,
+						metrospropiedad int, 
+						valorpropiedad int,
+						src VARCHAR(500),
+						lavanderia int,
+						bicicletero int, 
+						rutpropietarioid VARCHAR(20),
+						constraint fk_propiedad_propietario foreign key (rutpropietarioid) references propietario(rutpropietario),
+						constraint fk_propiedad_comuna foreign key (comunaid) references comunas(cod_comuna)
+					   );
+
+
+CREATE TABLE reserva ( folio_reserva serial primary key,
+					   rutalumnoid   VARCHAR(20) NOT NULL,
+					   rutpropietarioid VARCHAR(20) NOT NULL,
+					   foliopropiedad int NOT NULL,
+						fecha_inicio date,
+					    fecha_fin date,
+					    monto     int,
+					    cantidad_dias int,
+						constraint fk_reserva_alumno foreign key (rutalumnoid) references alumno(rutalumno),
+						constraint fk_reserva_propietario foreign key (rutpropietarioid) references propietario(rutpropietario),
+					  constraint fk_reserva_propiedad foreign key (foliopropiedad) references propiedad(folio)
+					   );
+
