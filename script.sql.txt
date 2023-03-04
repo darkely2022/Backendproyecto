@@ -66,3 +66,9 @@ CREATE TABLE reserva ( folio_reserva serial primary key,
 					  constraint fk_reserva_propiedad foreign key (foliopropiedad) references propiedad(folio)
 					   );
 
+
+insert into comunas (cod_comuna, desc_comuna) values('1','Santiago');
+
+insert into comunas (cod_comuna, desc_comuna) values('2','Providencia');
+
+insert into comunas (cod_comuna, desc_comuna) values('3','Macul');
