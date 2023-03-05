@@ -17,7 +17,7 @@ const findOnePropietario = async (id) => {
 }
 
 const CreatePropietario = async (rutpropietario,nombrepropietario,apellidopropietario,direccionpropietario,comunapropietario,correopropietario,passwordpropietario) => {
-    const consulta = "INSERT INTO propietario (rutpropietario,nombrepropietario,apellidopropietario,direccionpropietario,comunapropietario,correopropietario,passwordpropietario) values ($1, $2,$3,$4,$5,$6,$7)"
+    const consulta = "INSERT INTO propietario values ($1, $2,$3,$4,$5,$6,$7)"
     const values = [rutpropietario,nombrepropietario,apellidopropietario,direccionpropietario,comunapropietario,correopropietario,passwordpropietario]
     const result = await pool.query(consulta, values)
     console.log("Propietario agregado")

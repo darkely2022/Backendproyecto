@@ -22,7 +22,7 @@ const SavePropietario = async (req, res) => {
         console.log(rutpropietario,nombrepropietario,apellidopropietario,direccionpropietario,comunapropietario,correopropietario,passwordpropietario)
         const data = await AgregarPropietario(rutpropietario,nombrepropietario,apellidopropietario,direccionpropietario,comunapropietario,correopropietario,passwordpropietario) // ComunaService.listcomuna()
         res.json({
-           message:"Propietario creado"
+           message:data
         });
         console.log("controller grabar propietarios")
     } catch (err) {
