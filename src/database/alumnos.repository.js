@@ -17,10 +17,17 @@ const findOneAlumno = async (id) => {
 }
 
 const CreateAlumno = async ( rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password) => {
+   try {
     const consulta = "INSERT INTO alumno values ($1, $2,$3,$4,$5,$6,$7)"
     const values = [rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password]
     const result = await pool.query(consulta, values)
     console.log("Alumno agregado")
+   } catch (error) {
+    console.log("error database grabar alumno");
+        console.log(pool);
+        throw err;
+   } 
+   
     }
     
 

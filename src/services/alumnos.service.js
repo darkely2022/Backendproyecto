@@ -24,7 +24,7 @@ const AgregarAlumno = async(rutalumno,nombrealumno,apellidoalumno,direccionalumn
         }
         else {
         console.log(rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password)
-        const propietario = await CreateAlumno(rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password)
+        const data = await CreateAlumno(rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password)
         console.log("Grabar servicio alumnos")
             return "Alumno creado"
         }
