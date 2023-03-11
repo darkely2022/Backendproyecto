@@ -7,6 +7,7 @@ const propiedades = require('./propiedades');
 const alumnos = require('./alumnos');
 const apoderados = require('./apoderados');
 const relaciones = require('./relaciones');
+const reservas = require('./reservas');
 
 const router = express.Router();
 
@@ -16,6 +17,7 @@ router.use('/propiedades', propiedades);
 router.use('/alumnos', alumnos);
 router.use('/apoderados', apoderados);
 router.use('/relaciones',relaciones);
+router.use('/reservas',reservas);
 
 //router.use('/users', validateJwt, users);
 
