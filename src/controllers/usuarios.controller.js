@@ -4,7 +4,7 @@ const {findUsuario,listusuarios,AgregarUsuario} = require('../services/usuarios.
 
 const findOneUsuario = async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const usuarios = await findUsuario(id) 
         res.status(200).json({
             usuarios: usuarios,

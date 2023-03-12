@@ -3,7 +3,7 @@ const {listcomuna} = require('../services/comunas.service');
 const list = async (req, res) => {
     try {
         const comunas = await listcomuna() // ComunaService.listcomuna()
-        res.json({
+        res.status(200).json({
             comunas: comunas,
         });
         console.log("controller comunas")
