@@ -19,7 +19,7 @@ router.use('/propiedades', propiedades);
 router.use('/alumnos', alumnos);
 router.use('/apoderados', apoderados);
 router.use('/relaciones',relaciones);
-router.use('/reservas',reservas);
+router.use('/reservas',validateJwt,reservas);
 router.use('/usuarios',usuarios);
 router.use('/auth',auth);
 
