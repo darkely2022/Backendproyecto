@@ -1,11 +1,11 @@
 // primera capa q se enfrenta el cliente para hacer la gestion 
 
-const userService = require('../services/auth.service')
+const {login} = require('../services/auth.service')
 
-const login = (req, res) => {
+const Loguear = async (req, res) => {
     try {
         const { username, password } = req.body;
-        const token = userService.login(username, password)
+        const token = await login(username, password)
         res.status(200).json({
             token: token,
         });
@@ -17,13 +17,7 @@ const login = (req, res) => {
     }
 };
 
-const register = (req, res) => {
-    res.status(500).json({
-        message: "not implemented",
-    });
-};
 
 module.exports = {
-    login,
-    register,
+    Loguear,
 };

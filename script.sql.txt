@@ -67,8 +67,22 @@ CREATE TABLE reserva ( folio_reserva serial primary key,
 					   );
 
 
+CREATE TABLE usuario ( id VARCHAR(20) primary key,
+					    tipo_usuario_id int NOT NULL ,
+					    password        VARCHAR(100) NULL );
+
+
+CREATE TABLE tipo_usuario ( id_tipo    int primary key,
+					        desc_tipo  VARCHAR(100) NULL );
+						
+
+
 insert into comunas (cod_comuna, desc_comuna) values('1','Santiago');
 
 insert into comunas (cod_comuna, desc_comuna) values('2','Providencia');
 
 insert into comunas (cod_comuna, desc_comuna) values('3','Macul');
+
+insert into tipo_usuario  (id_tipo, desc_tipo) values('1','Alumno');
+
+insert into tipo_usuario  (id_tipo, desc_tipo) values('2','Propietario');

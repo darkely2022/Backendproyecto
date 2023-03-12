@@ -2,9 +2,9 @@ const { pool } = require('./database');
 
 const findOneAlumno = async (id) => {
     try {
-        const consulta ='SELECT * FROM alumno where rutalumno = $1';
+        const consulta = 'SELECT * FROM alumno where rutalumno = $1';
         const values = [id]
-        const {rows} = await pool.query(consulta, values);
+        const { rows } = await pool.query(consulta, values);
         console.log("lectura base datos alumno")
         console.log(rows);
         return rows
@@ -12,24 +12,24 @@ const findOneAlumno = async (id) => {
         console.log("error database alumno");
         console.log(pool);
         throw err;
-        
+
     }
 }
 
-const CreateAlumno = async ( rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password) => {
-   try {
-    const consulta = "INSERT INTO alumno values ($1, $2,$3,$4,$5,$6,$7)"
-    const values = [rutalumno,nombrealumno,apellidoalumno,direccionalumno,comunaalumno,correoalumno,password]
-    const result = await pool.query(consulta, values)
-    console.log("Alumno agregado")
-   } catch (error) {
-    console.log("error database grabar alumno");
+const CreateAlumno = async (rutalumno, nombrealumno, apellidoalumno, direccionalumno, comunaalumno, correoalumno, password) => {
+    try {
+        const consulta = "INSERT INTO alumno values ($1, $2,$3,$4,$5,$6,$7)"
+        const values = [rutalumno, nombrealumno, apellidoalumno, direccionalumno, comunaalumno, correoalumno, password]
+        const result = await pool.query(consulta, values)
+        console.log("Alumno agregado")
+    } catch (error) {
+        console.log("error database grabar alumno");
         console.log(pool);
         throw err;
-   } 
-   
     }
-    
+
+}
+
 
 module.exports = {
     findOneAlumno,
