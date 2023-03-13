@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.get('/', PropiedadesController.list);
 router.get('/:id', PropiedadesController.findOne);
+router.get('/filtro/:id', PropiedadesController.findFiltros);
 router.post('/', PropiedadesController.Create);
 // router.put('/:id', usersController.updateOne);
 // router.delete('/:id', usersController.delete);

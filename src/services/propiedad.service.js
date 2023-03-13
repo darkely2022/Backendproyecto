@@ -1,4 +1,4 @@
-const { findAllPropiedades, findPropiedadPropietario, CreatePropiedad } = require('../database/propiedad.repository');
+const { findAllPropiedades, findPropiedadPropietario, findFiltroPropiedades,CreatePropiedad } = require('../database/propiedad.repository');
 const { findOnePropietario } = require('../database/propietarios.repository')
 const express = require('express');
 
@@ -26,6 +26,19 @@ const listpropiedadpropietario = async (id) => {
     }
 }
 
+const listpropiedadfiltrada = async (comunaid,numhabitacion,metrospropiedad,lavanderia,bicicletero) => {
+    try {
+        
+        const propiedadesfiltradas = await findFiltroPropiedades(comunaid,numhabitacion,metrospropiedad,lavanderia,bicicletero)
+        console.log("lectura servicios propiedad filtrada")
+        console.log(propiedadesfiltradas)
+        return propiedadesfiltradas;
+    } catch (err) {
+        console.log("error propiedad filtrada servicio");
+        throw err;
+    }
+}
+
 const AgregarPropiedad = async (folio,nombrepropiedad, direccionpropiedad, comunaid, numhabitacion, metrospropiedad, valorpropiedad, src, lavanderia, bicicletero, rutpropietarioid) => {
     try {
         const propietarios = await findOnePropietario(rutpropietarioid)
@@ -49,5 +62,6 @@ const AgregarPropiedad = async (folio,nombrepropiedad, direccionpropiedad, comun
 module.exports = {
     listpropiedad,
     listpropiedadpropietario,
+    listpropiedadfiltrada,
     AgregarPropiedad,
 };

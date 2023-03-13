@@ -1,4 +1,4 @@
-const {listpropiedad,listpropiedadpropietario,AgregarPropiedad} = require('../services/propiedad.service');
+const {listpropiedad,listpropiedadpropietario,listpropiedadfiltrada,AgregarPropiedad} = require('../services/propiedad.service');
 
 const list = async (req, res) => {
     try {
@@ -28,6 +28,21 @@ const findOne = async (req, res) => {
         });
     }
 }
+
+const findFiltros = async (req, res) => {
+    try {
+        const { comunaid,numhabitacion,metrospropiedad,lavanderia,bicicletero } = req.body
+        const propiedadesfiltradas = await listpropiedadfiltrada(comunaid,numhabitacion,metrospropiedad,lavanderia,bicicletero) 
+        res.json({
+            propiedadesfiltradas: propiedadesfiltradas,
+        });
+        console.log("controller propiedad filtrada")
+    } catch (err) {
+        res.status(500).json({
+            message: "error getting controller propiedad filtrada",
+        });
+    }
+}
 const Create = async (req, res) => {
     try {
        
@@ -50,5 +65,6 @@ const Create = async (req, res) => {
 module.exports = {
     list,
     findOne,
+    findFiltros,
     Create,
 };
