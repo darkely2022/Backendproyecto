@@ -1,5 +1,5 @@
 // esta es la capa que tiene la inteligencia aqui va la logica del negocio
-const { findOne , findAll, CreateUsuario } = require('../database/users.repository');
+const { findOne , findAll, findOnePassword ,CreateUsuario } = require('../database/users.repository');
 
 const findUsuario = async (id) => {
     try {
@@ -31,6 +31,23 @@ const listusuarios = async () => {
 }
 
 
+const findUserPass = async (username, password) => {
+    try {
+        const usuarios = await findOne(username, password)
+        if (usuarios.length > 0) {
+            
+            return usuarios
+        }
+        else {
+            return "Usuario no existe"
+        }
+    } catch (error) {
+        console.log("error realiza usuario servicio");
+        throw err;
+    }
+   
+}
+
 const AgregarUsuario = async (id, tipo_usuario_id, password) => {
     try {
         const usuarios = await findOne(id, password)
@@ -54,5 +71,6 @@ const AgregarUsuario = async (id, tipo_usuario_id, password) => {
 module.exports = {
     findUsuario,
     listusuarios,
+    findUserPass,
     AgregarUsuario,
 };

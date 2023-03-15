@@ -27,6 +27,23 @@ const findOne = async (id) => {
 }
 
 
+const findOnePassword = async (username, password) => {
+    try {
+        const consulta ='SELECT * FROM usuario where id = $1 and password = $2';
+        const values = [username,password ]
+        const {rows} = await pool.query(consulta, values);
+        console.log("lectura base datos usuario")
+        console.log(rows);
+        return rows
+    } catch (err) {
+        console.log("error database usuario");
+        console.log(pool);
+        throw err;
+        
+    }
+}
+
+
 const CreateUsuario = async (id, tipo_usuario_id, password) => {
     try {
         const consulta = "INSERT INTO usuario  values ($1, $2,$3)"
@@ -44,5 +61,6 @@ const CreateUsuario = async (id, tipo_usuario_id, password) => {
 module.exports = {
     findAll,
     findOne,
+    findOnePassword,
     CreateUsuario,
 };

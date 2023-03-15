@@ -9,4 +9,6 @@ router.get('/', UsuariosController.list);
 
 router.post('/', UsuariosController.SaveUsuario);
 
+router.post('/gettipo', UsuariosController.findOneUserPass);
+
 module.exports = router;

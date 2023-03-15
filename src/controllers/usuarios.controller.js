@@ -1,6 +1,6 @@
 // primera capa q se enfrenta el cliente para hacer la gestion 
 
-const {findUsuario,listusuarios,AgregarUsuario} = require('../services/usuarios.service')
+const {findUsuario,listusuarios,findUserPass,AgregarUsuario} = require('../services/usuarios.service')
 
 const findOneUsuario = async (req, res) => {
     try {
@@ -32,6 +32,22 @@ const list = async (req, res) => {
     }
 }
 
+
+const findOneUserPass = async (req, res) => {
+    try {
+        const { username, password}=req.body 
+        const usuarios = await findUserPass(username, password) 
+        res.status(200).json({
+            usuarios: usuarios,
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "busqueda usuario error",
+        });
+    }
+};
+
 const SaveUsuario = async (req, res) => {
     try {
         const { id, tipo_usuario_id, password}=req.body 
@@ -51,5 +67,6 @@ const SaveUsuario = async (req, res) => {
 module.exports = {
     findOneUsuario,
     list,
+    findOneUserPass,
     SaveUsuario,
 };
