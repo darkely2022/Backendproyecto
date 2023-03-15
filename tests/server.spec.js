@@ -16,7 +16,7 @@ app.listen(port, (err) => {
 describe("Operaciones GET de usuarios", () => {
 
     it('GET Validar que GET de usuarios retorne un 500 como statusCode', async () => {
-        const resultado = await request(app).get('http://localhost:3000/usuarios/19').send()
+        const resultado = await request(app).get('http://localhost:3000/usuarios').send('19')
         expect(resultado.statusCode).toBe(500);
     })
 });

@@ -48,7 +48,7 @@ const findFiltroPropiedades = async (comunaid,numhabitacion,metrospropiedad,lava
 
 const CreatePropiedad = async (folio, nombrepropiedad, direccionpropiedad, comunaid, numhabitacion, metrospropiedad, valorpropiedad, src, lavanderia, bicicletero, rutpropietarioid) => {
     const consulta = "INSERT INTO propiedad ( nombrepropiedad  , direccionpropiedad , comunaid,numhabitacion ,metrospropiedad ,valorpropiedad ,src,lavanderia ,bicicletero, rutpropietarioid ) values ($1, $2,$3,$4,$5,$6,$7,$8,$9,$10)"
-    const values = [folio,nombrepropiedad, direccionpropiedad, comunaid, numhabitacion, metrospropiedad, valorpropiedad, src, lavanderia, bicicletero, rutpropietarioid]
+    const values = [nombrepropiedad, direccionpropiedad, comunaid, numhabitacion, metrospropiedad, valorpropiedad, src, lavanderia, bicicletero, rutpropietarioid]
     const result = await pool.query(consulta, values)
     console.log("Propiedad agregada")
     }
