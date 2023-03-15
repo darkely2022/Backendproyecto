@@ -33,7 +33,7 @@ const listusuarios = async () => {
 
 const findUserPass = async (username, password) => {
     try {
-        const usuarios = await findOne(username, password)
+        const usuarios = await findOnePassword(username, password)
         if (usuarios.length > 0) {
             
             return usuarios
