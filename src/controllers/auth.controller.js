@@ -7,7 +7,8 @@ const Loguear = async (req, res) => {
         const { username, password } = req.body;
         const token = await login(username, password)
         res.status(200).json({
-            token: token,
+            token: token
+           
         });
     } catch (err) {
         console.error(err);
