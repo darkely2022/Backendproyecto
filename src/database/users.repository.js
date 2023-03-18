@@ -29,10 +29,10 @@ const findOne = async (id) => {
 
 const findOnePassword = async (username, password) => {
     try {
-        const consulta ='SELECT * FROM usuario where id = $1 and password = $2';
+        const consulta ='SELECT tipo_usuario_id FROM usuario where id = $1 and password = $2';
         const values = [username,password ]
         const {rows} = await pool.query(consulta, values);
-        console.log("lectura base datos usuario")
+        console.log("lectura base datos usuario/pass")
         console.log(rows);
         return rows
     } catch (err) {
